@@ -8,14 +8,18 @@ var Greeter = React.createClass({
 
     getInitialState: function () {
       return {
-        name: this.props.name;
+        name: this.props.name
       };
     },
+
     onButtonClick: function (e) {
         e.preventDefault();
-        var name = this.refs.name.value
+        var name = this.refs.name.value;
 
-        alert('I said don\'t press the fucking button '+name+', what is the matter with you.');
+        this.setState ({
+          name: name
+        });
+        // alert('I said don\'t press the fucking button '+name+', what is the matter with you.');
     },
     render: function () {
         var name = this.state.name;
@@ -25,7 +29,6 @@ var Greeter = React.createClass({
             <div>
                 <h1>Hello {name}</h1>
                 <p>{message}</p>
-
             <form onSubmit={this.onButtonClick}>
                 <input type="text" ref="name"/>
                 <button>Set Name</button>
