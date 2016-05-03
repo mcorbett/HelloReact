@@ -5,6 +5,12 @@ var Greeter = React.createClass({
             message: 'Do not enter your name and then press the button'
         };
     },
+
+    getInitialState: function () {
+      return {
+        name: this.props.name;
+      };
+    },
     onButtonClick: function (e) {
         e.preventDefault();
         var name = this.refs.name.value
@@ -12,7 +18,7 @@ var Greeter = React.createClass({
         alert('I said don\'t press the fucking button '+name+', what is the matter with you.');
     },
     render: function () {
-        var name = this.props.name;
+        var name = this.state.name;
         var message = this.props.message;
 
         return (
